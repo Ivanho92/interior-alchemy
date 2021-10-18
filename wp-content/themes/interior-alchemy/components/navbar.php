@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<?php if (is_admin_bar_showing()) : ?> 
+<?php endif; ?>
+<nav class="<?= is_admin_bar_showing() ? 'mt-4' : '' ?> navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
         <a class="text-uppercase navbar-brand brand-logo" href="index.php">Interior Alchemy</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
