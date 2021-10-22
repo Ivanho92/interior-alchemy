@@ -14,7 +14,7 @@
         )
     );
     $query = new WP_Query($args);
-    ?>
+?>
 
 <small>Front-Page</small>
 
@@ -22,8 +22,8 @@
 
     <div class="jumbotron p-5 mb-3 rounded-3">
         <div class="text-center container-fluid py-5">
-            <h1 class="mt-5 mb-4 website-title text-uppercase display-2 fw-bold text-light">Interior Alchemy</h1>
-            <p class="website-baseline display-6 text-light">a return to home</p>
+            <h1 class="mt-5 mb-4 website-title text-uppercase display-2 fw-bold text-light"><?= get_bloginfo('name'); ?></h1>
+            <p class="website-baseline display-6 text-light"><?= get_bloginfo('description'); ?></p>
         </div>
     </div>
 
@@ -35,7 +35,6 @@
 
             
             <?php if ($query->have_posts()) : ?>
-
                 <?php while ($query->have_posts()): $query->the_post(); ?>
                     <div class="mb-5 col-md-3 d-flex flex-column justify-content-start">
                     <?php if ( has_post_thumbnail() ) : ?>
