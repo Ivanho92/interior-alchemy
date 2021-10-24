@@ -12,16 +12,20 @@ get_header(); ?>
 
 <?php include(get_template_directory() . "/components/navbar.php"); ?>
 
-<div class="jumbotron jumbotron-offering p-5 mb-4 rounded-3"></div>
+<?php while (have_posts()) : the_post(); ?>
+<div class="<?= has_post_thumbnail() ?? 'jumbotron jumbotron-offering' ?> p-5 mb-4 rounded-3"
+    <?php if (has_post_thumbnail()) : ?>
+        style="background-image: url(<?= get_the_post_thumbnail_url();?>)"
+    <?php endif; ?>
+></div>
 
 <main>
-    <?php while (have_posts()) : the_post(); ?>
-        <h1 class="py-3 text-center"><?php the_title(); ?></h1>
-        <div class="mx-auto container-small">
-            <hr>
-            <?php the_content(); ?>
-        </div>
-    <?php endwhile; ?>
+    <h1 class="py-3 text-center"><?php the_title(); ?></h1>
+    <div class="mx-auto container-small">
+        <hr>
+        <?php the_content(); ?>
+    </div>
+<?php endwhile; ?>
 
     <div class="d-none">
 

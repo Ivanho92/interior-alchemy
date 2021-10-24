@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+// define( 'WP_HOME', 'http://localhost/interior-alchemy' );
+// define( 'WP_SITEURL', 'http://localhost/interior-alchemy' );
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'interior-alchemy' );
