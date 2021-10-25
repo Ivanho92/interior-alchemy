@@ -20,7 +20,12 @@
 
 <?php include(get_template_directory() . "/components/navbar.php"); ?>
 
-    <div class="jumbotron p-5 mb-3 rounded-3">
+    <div class="jumbotron p-5 mb-3 rounded-3" style="
+        background-image: url(
+            <?= wp_get_attachment_url(get_theme_mod('header_background_image')); ?>
+        );
+        background-position-y: <?= get_theme_mod('header_background_image_position');?>%";
+    >
         <div class="text-center container-fluid py-5">
             <h1 class="mt-5 mb-4 website-title text-uppercase display-2 fw-bold text-light"><?= get_bloginfo('name'); ?></h1>
             <p class="website-baseline display-6 text-light"><?= get_bloginfo('description'); ?></p>
