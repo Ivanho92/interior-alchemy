@@ -1,16 +1,19 @@
 <?php
     $args = array(
         'post_type' => 'page',
-        'post_per_page' => 3,
+        'posts_per_page' => 3,
         'post_status' => 'publish',
+        'orderby' => 'menu_order',
+        'order'   => 'ASC',
         'meta_query' => array(
             array(
                 'key' => '_wp_page_template',
                 'value' => 'offering.php'
                 )
-        )
-    );
-    $query = new WP_Query($args);
+            ),
+        );
+    wp_reset_query();
+    $custom_query = new WP_Query($args);
 ?>
 
 <nav class="<?= is_admin_bar_showing() ? 'mt-4' : '' ?> navbar navbar-expand-lg navbar-light fixed-top">
@@ -24,15 +27,15 @@
                 <li class="nav-item dropdown">
                     <a class="text-reset nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Offerings</a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
-                    <?php if ($query->have_posts()) : ?>
-                        <?php while ($query->have_posts()): $query->the_post(); ?>
-                        <li><a class="text-reset dropdown-item" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                    <?php if ($custom_query->have_posts()) : ?>
+                        <?php while ($custom_query->have_posts()): $custom_query->the_post(); ?>
+                        <li><a class="text-reset dropdown-item" href="<?= the_permalink(); ?>"><?php the_title(); ?></a></li>
                         <?php endwhile; ?>
                     <?php endif; ?>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="text-reset nav-link" href="about.php">About</a>
+                    <a class="text-reset nav-link" href="about-me">About</a>
                 </li>
             </ul>
         </div>

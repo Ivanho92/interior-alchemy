@@ -14,9 +14,9 @@ get_header(); ?>
 
 <?php wp_reset_query(); ?>
 <?php while (have_posts()) : the_post(); ?>
-<div class="<?= has_post_thumbnail() ?? 'jumbotron jumbotron-offering' ?> p-5 mb-4 rounded-3"
+<div class="<?= has_post_thumbnail() ? 'jumbotron jumbotron-offering' : '' ?> p-5 mb-4 rounded-3"
     <?php if (has_post_thumbnail()) : ?>
-        style="background-image: url(<?= get_the_post_thumbnail_url();?>)"
+        style="background-image: url(<?= get_the_post_thumbnail_url() ;?>)"
     <?php endif; ?>
 ></div>
 
