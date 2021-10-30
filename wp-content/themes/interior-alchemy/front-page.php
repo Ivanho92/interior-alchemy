@@ -33,9 +33,9 @@
     </div>
 
     <div class="container">
-        <h2 class="display-4 py-3 text-center">Offerings</h2>
+        <h2 class="display-4 py-3 text-center"><?= get_theme_mod('homepage_lead') ?></h2>
         <hr>
-        <p class="text-center mb-5">A methodology developped by Mathilde Grimm that utilizes a range of holistic healing modalities to facilititate a return to home - within and without.</p>
+        <p class="text-center mb-5"><?= get_theme_mod('homepage_description') ?></p>
         <div class="row justify-content-around text-center">
 
             
@@ -51,9 +51,7 @@
                             <h3><?php the_title(); ?></h3>
                         </div>
                         <div>
-                            <p>Some representative placeholder content for the three columns of text below the carousel. This is
-                                the
-                                first column.</p>
+                            <p><?php the_field('summary'); ?></p>
                             <p><a class="btn btn-cta" href="<?php the_permalink(); ?>">More details</a></p>
                         </div>
                     </div>
