@@ -12,6 +12,7 @@ get_header(); ?>
 
 <?php include(get_template_directory() . "/components/navbar.php"); ?>
 
+<?php wp_reset_query(); ?>
 <?php while (have_posts()) : the_post(); ?>
 <div class="<?= has_post_thumbnail() ?? 'jumbotron jumbotron-offering' ?> p-5 mb-4 rounded-3"
     <?php if (has_post_thumbnail()) : ?>
@@ -26,6 +27,7 @@ get_header(); ?>
         <?php the_content(); ?>
     </div>
 <?php endwhile; ?>
+<?php wp_reset_query(); ?>
 
     <div class="d-none">
 
@@ -75,8 +77,5 @@ get_header(); ?>
     <?php include("components/cta_to_contact.php") ?>
 
 </main>
-
-
-<?php wp_reset_query(); ?>
 
 <?php get_footer();

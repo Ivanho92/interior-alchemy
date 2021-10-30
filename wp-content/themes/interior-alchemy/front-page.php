@@ -1,19 +1,21 @@
 <?php get_header() ?>
 
-
 <?php
     $args = array(
         'post_type' => 'page',
-        'post_per_page' => 3,
+        'posts_per_page' => 3,
         'post_status' => 'publish',
+        'orderby' => 'menu_order',
+        'order'   => 'ASC',
         'meta_query' => array(
             array(
                 'key' => '_wp_page_template',
                 'value' => 'offering.php'
                 )
-        )
-    );
-    $query = new WP_Query($args);
+            ),
+        );
+    wp_reset_query();
+    $custom_query = new WP_Query($args);
 ?>
 
 <small>Front-Page</small>
@@ -38,9 +40,9 @@
         <p class="text-center mb-5"><?= get_theme_mod('homepage_description') ?></p>
         <div class="row justify-content-around text-center">
 
-            
-            <?php if ($query->have_posts()) : ?>
-                <?php while ($query->have_posts()): $query->the_post(); ?>
+        
+            <?php if ($custom_query->have_posts()) : ?>
+                <?php while ($custom_query->have_posts()): $custom_query->the_post(); ?>
                     <div class="mb-5 col-md-3 d-flex flex-column justify-content-start">
                     <?php if ( has_post_thumbnail() ) : ?>
                         <div>
@@ -60,7 +62,8 @@
             <?php endwhile; ?>
             <?php else: ?>
                 <p class="text-center">Aucune offre pour le moment...</p>
-            <?php endif; ?>
+            <?php endif; wp_reset_query(); ?>
+            
         </div>
 
         <?php include(get_template_directory() . "/components/cta_to_contact.php"); ?>
