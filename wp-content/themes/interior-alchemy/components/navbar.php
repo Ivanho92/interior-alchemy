@@ -16,7 +16,27 @@
     $custom_query = new WP_Query($args);
 ?>
 
+<!-- <?php wp_nav_menu(["theme_location" => "nav-menu"]) ?> -->
+
 <nav class="<?= is_admin_bar_showing() ? 'mt-4' : '' ?> navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="text-uppercase navbar-brand brand-logo" href="<?= get_site_url() ?>"><?= get_bloginfo('name'); ?></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <?php wp_nav_menu([
+            'theme_location'  => 'nav-menu',
+            'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+            'container'       => 'div',
+            'container_class' => 'collapse navbar-collapse',
+            'container_id'    => 'navbarSupportedContent',
+            'menu_class'      => 'navbar-nav ms-auto mb-2 mb-lg-0',
+            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'          => new WP_Bootstrap_Navwalker(),
+        ]); ?>
+    </div>
+</nav>
+<!-- <nav class="<?= is_admin_bar_showing() ? 'mt-4' : '' ?> navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
         <a class="text-uppercase navbar-brand brand-logo" href="<?= get_site_url() ?>"><?= get_bloginfo('name'); ?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +62,6 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 
 <?php wp_reset_query(); ?>

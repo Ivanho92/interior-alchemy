@@ -14196,8 +14196,9 @@ footer p.lead,
   line-height: 48.6px;
 }
 
-.nav-link {
+nav.navbar div.navbar-collapse ul.navbar-nav .nav-link {
   margin-left: 40px;
+  color: #c75300;
 }
 
 .dropdown-item:hover {
